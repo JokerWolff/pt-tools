@@ -41,7 +41,7 @@ def main():
     
     for src, dst in zip(src_files, dst_files):
         try:
-            print(src, dst)
+            os.link(src, dst)
         except Exception as e:
             print(f"Error: Failed to link {src} to {dst}: {e}")
 
