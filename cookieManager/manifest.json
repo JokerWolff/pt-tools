@@ -1,0 +1,18 @@
+{
+	"manifest_version": 3,
+	"author": "Jqkaewolf/Joker",
+	"name": "Cookies Manager",
+	"version": "0.0.1",
+	"description": "一个对Cookies实现注入与备份操作的小工具",
+	"host_permissions": [
+		"http://*/*",
+		"https://*/*"
+	],
+	"permissions": [
+		"cookies"
+	],
+	"action": {
+		"default_popup": "popup.html",
+		"default_icon": "default_popup.png"
+	}
+}

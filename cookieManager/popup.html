@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+body {
+    height: auto;
+    width: 320px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+input[type="text"] {
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+#status {
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #f2f2f2;
+    color: #555;
+}
+
+button, a {
+    display: block;
+    width: calc(100% - 40px);
+    padding: 10px 0;
+    margin-bottom: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+button:hover, a:hover {
+    background-color: #0056b3;
+}
+
+</style>
+</head>
+<body>
+<input id="url" type="text" placeholder="URL (仅在注入时填写)" /><br>
+<input id="cookie" type="text" placeholder="Cookie (仅在注入时填写)" /><br>
+<input id="status" type="text" placeholder="Status" readonly /><br>
+<button id="hook">注入 Cookie</button>
+<button id="backup">备份 Cookie</button>
+<script type="text/javascript" src="main.js"></script>
+</body>
+</html>
