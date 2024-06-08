@@ -28,7 +28,6 @@ class TransmissionParser:
                 self.result.update(temp)
                 self.ok = True
         except Exception as e:
-            # Handle exception appropriately, e.g., logging
             print(e)
 
     def to_json(self) -> str:
