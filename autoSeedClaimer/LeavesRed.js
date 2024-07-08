@@ -122,7 +122,7 @@ let init = (containerSelector, childNumber, suffix, apis) => {
     document.querySelectorAll(".main > tbody > tr > td:nth-child(1) > table > tbody > tr:nth-child(" + childNumber + ") > td:nth-child(1)")[0].appendChild(btn);
 }
 
-const apiList = ["https://pthome.net/claim.php?act=add&tid=", "", "https://pthome.net/claim.php?act=del&tid=", ""]
+const apiList = ["https://leaves.red/claim.php?act=add&tid=", "", "https://leaves.red/claim.php?act=del&tid=", ""]
 init("#ka", 21, "", apiList);
 init("#ka1", 22, "_", apiList);
 init("#ka3", 24, "__", apiList);
