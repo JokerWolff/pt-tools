@@ -123,6 +123,6 @@ let init = (containerSelector, childNumber, suffix, apis) => {
 }
 
 const apiList = ["https://pthome.net/claim.php?act=add&tid=", "", "https://pthome.net/claim.php?act=del&tid=", ""]
-init("#ka", 20, "", apiList);
-init("#ka1", 21, "_", apiList);
-init("#ka3", 23, "__", apiList);
+init("#ka", 21, "", apiList);
+init("#ka1", 22, "_", apiList);
+init("#ka3", 24, "__", apiList);
