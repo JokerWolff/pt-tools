@@ -59,6 +59,11 @@ class SeedClaimer {
     claimSelectedSeeds() {
         this.selectedSeeds.forEach((item) => {
             const tid = item.querySelector("td:nth-child(2) > a").href.split("=")[1].split("&")[0];
+	    const temp = item.querySelector("td:nth-child(13) > button:nth-child(1)").dataset.claim_id;
+                if (temp != '0') {
+                    alert("您已经认领该种，无需重复认领");
+                    return;
+                }
             this.claimSeed(this.addApi, `action=addClaim&params%5Btorrent_id%5D=${tid}`);
         });
     }
