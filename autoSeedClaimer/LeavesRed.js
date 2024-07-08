@@ -1,11 +1,9 @@
 class SeedClaimer {
-    constructor(containerSelector, suffix, addApiPrefix, addApiSuffix, delApiPrefix, delApiSuffix) {
+    constructor(containerSelector, suffix, addApi, delApi) {
         this.container = document.querySelector(containerSelector);
         this.suffix = suffix;
-        this.addApiPrefix = addApiPrefix;
-        this.addApiSuffix = addApiSuffix;
-        this.delApiPrefix = delApiPrefix;
-        this.delApiSuffix = delApiSuffix;
+        this.addApi = addApi;
+        this.delApi = delApi;
         this.seedItems = Array.from(this.container.querySelectorAll("table > tbody > tr"));
         this.seedItems.shift(); // Remove header row
         this.initButtons();
@@ -61,7 +59,7 @@ class SeedClaimer {
     claimSelectedSeeds() {
         this.selectedSeeds.forEach((item) => {
             const tid = item.querySelector("td:nth-child(2) > a").href.split("=")[1].split("&")[0];
-            this.claimSeed(this.addApiPrefix + tid + this.addApiSuffix);
+            this.claimSeed(this.addApi, `action=addClaim&params%5Btorrent_id%5D=${tid}`);
         });
     }
 
@@ -71,21 +69,27 @@ class SeedClaimer {
         // 如果用户点击了确认按钮
         if (confirmed) {
             this.selectedSeeds.forEach((item) => {
-                const tid = item.querySelector("td:nth-child(2) > a").href.split("=")[1].split("&")[0];
-                this.claimSeed(this.delApiPrefix + tid + this.delApiSuffix);
+                const tid = item.querySelector("td:nth-child(13) > button:nth-child(1)").dataset.claim_id;
+                if (tid === '0') {
+                    alert("您没有认领该种，无需取消");
+                    return;
+                }
+                this.claimSeed(this.delApi, `action=removeClaim&params%5Bid%5D=${tid}`);
             });
         }
     }
 
-    claimSeed(url) {
+    claimSeed(url, data) {
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', url);
+        console.log(data)
+        xhr.open('POST', url);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {
                 console.log(xhr.status);
             }
         };
-        xhr.send(null);
+        xhr.send(data);
     }
 
     selectAllSeeds() {
@@ -118,11 +122,12 @@ let init = (containerSelector, childNumber, suffix, apis) => {
             return;
         }
         const seedClaimer = new SeedClaimer(containerSelector, suffix, ...apis);
+	seedClaimer.updateSelectedSeeds();
     });
     document.querySelectorAll(".main > tbody > tr > td:nth-child(1) > table > tbody > tr:nth-child(" + childNumber + ") > td:nth-child(1)")[0].appendChild(btn);
 }
 
-const apiList = ["https://leaves.red/claim.php?act=add&tid=", "", "https://leaves.red/claim.php?act=del&tid=", ""]
-init("#ka", 21, "", apiList);
+const apiList = ["https://leaves.red/ajax.php", "https://leaves.red/ajax.php"]
+
 init("#ka1", 22, "_", apiList);
 init("#ka3", 24, "__", apiList);
