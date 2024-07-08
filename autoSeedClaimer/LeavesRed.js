@@ -86,7 +86,6 @@ class SeedClaimer {
 
     claimSeed(url, data) {
         let xhr = new XMLHttpRequest();
-        console.log(data)
         xhr.open('POST', url);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onreadystatechange = function() {
