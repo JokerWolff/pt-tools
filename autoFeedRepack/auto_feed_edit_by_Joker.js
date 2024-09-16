@@ -6236,10 +6236,10 @@ if (site_url.match(/^https:\/\/.*?usercp.php\?action=personal(#setting|#ptgen|#m
 
         //**************************************************** 4 ***************************************************************************
         $('#setting').append(`<b>快速搜索站点设置(每个一行,可自行添加)
-            <a href="https://raw.githubusercontent.com/JokerWolff/pt-tools/main/autoFeedRepack/temple_search_urls.txt" target=_blank>
+            <a href="https://gitee.com/tomorrow505/auto-feed-helper/raw/master/temple_search_urls" target=_blank>
             <font color="red">范例</font></a></b></br>`);
 
-        getDoc('https://raw.githubusercontent.com/JokerWolff/pt-tools/main/autoFeedRepack/temple_search_urls.txt', null, function(doc){
+        getDoc('https://gitee.com/tomorrow505/auto-feed-helper/raw/master/temple_search_urls', null, function(doc){
             $(`<font>从范例页面获取：</font><input id="url_input" type="text" list="options_jump_href" style="border-radius:2px;">
                 <datalist name="options_jump_href" id="options_jump_href" style="width:100px; margin-bottom:3px; margin-right:5px"><option value="---">---</option></datalist><a type="button" id="append_url" href="#" style="color:blue">↓ 新增</a><br>`).insertBefore($('textarea[name="set_jump_href"]'));
             $(`<div style="display:none; margin-bottom:5px"><span id="show_selected"></span><br></div>`).insertBefore($('textarea[name="set_jump_href"]'));
