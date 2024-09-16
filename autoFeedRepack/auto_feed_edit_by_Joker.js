@@ -12251,13 +12251,13 @@ function auto_feed() {
 
         // 启动分组发布
         $('#publish').click(() => {
-            Array.from($('#forward_r a')).forEach(ele => {
+            Array.from($('#forward_r a'))?.forEach(ele => {
                 if (groupData[$('#currentGroup').val()].indexOf(ele.id) != -1) {
                     ele.click()
                 }
             })
         })
-        Object.keys(groupData).forEach(key => {
+        Object.keys(groupData)?.forEach(key => {
             $('#currentGroup').append(`<option value=${key}>${key}</option>`)
         })
         $('#currentGroup').val(Object.keys(groupData)[0])
