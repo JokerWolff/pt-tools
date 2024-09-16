@@ -6660,7 +6660,9 @@ if (site_url.match(/^https:\/\/.*?usercp.php\?action=personal(#setting|#ptgen|#m
 
             // 初始化
             let groupData = GM_getValue('groupData') || {};
-            viewGroup(Object.keys(GM_getValue('groupData'))[0]);
+            if (groupData != {}){
+                viewGroup(Object.keys(GM_getValue('groupData'))[0]);
+            }
             $('#groupName').val($('#currentGroup').val());
         });
         /******************************************************************************************************************************************************************************/
