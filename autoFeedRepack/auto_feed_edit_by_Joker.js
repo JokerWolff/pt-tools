@@ -6660,7 +6660,7 @@ if (site_url.match(/^https:\/\/.*?usercp.php\?action=personal(#setting|#ptgen|#m
 
             // 初始化
             let groupData = GM_getValue('groupData') || {};
-            if (groupData != {}){
+            if ((typeof groupData == 'object') && (Object.keys(groupData).length != 0)){
                 viewGroup(Object.keys(GM_getValue('groupData'))[0]);
             }
             $('#groupName').val($('#currentGroup').val());
@@ -12244,7 +12244,7 @@ function auto_feed() {
         // 当前分组站点列表预览
         $('#currentGroup').change(() => {
             $('#listCurrentGroup').empty()
-            groupData[$('#currentGroup').val()].forEach(key => {
+            groupData[$('#currentGroup').val()]?.forEach(key => {
                 $('#listCurrentGroup').append(`<option value=${key}>${key}</option>`)
             })
         })
@@ -12262,7 +12262,7 @@ function auto_feed() {
         })
         $('#currentGroup').val(Object.keys(groupData)[0])
         $('#listCurrentGroup').empty()
-        groupData[$('#currentGroup').val()].forEach(key => {
+        groupData[$('#currentGroup').val()]?.forEach(key => {
             $('#listCurrentGroup').append(`<option value=${key}>${key}</option>`)
         })
         /*****************************************************************************************************************************************************************/
@@ -14266,7 +14266,7 @@ function auto_feed() {
         if (forward_site == 'AGSV') {
             raw_info.descr = raw_info.descr.replace(/\[color=.*?\].*?\[\/color\]/i, '').trim();
         }
-        if (['CMCT', 'PTsbao', 'HDPost','HDCity', 'BLU', 'UHD', 'HDSpace', 'HDB', 'iTS', 'PTP', 'BYR', 'GPW', 'HaresClub', 'HDTime', 
+        if (['CMCT', 'PTsbao', 'HDPost','HDCity', 'BLU', 'UHD', 'HDSpace', 'HDB', 'iTS', 'PTP', 'BYR', 'GPW', 'HaresClub', 'HDTime',
              'HD-Only', 'HDfans', 'SC', 'MTV', 'NBL', 'avz', 'PHD', 'CNZ', 'ANT', 'TVV', 'xthor', 'HDF', 'OpenCD', 'PigGo', 'RED', 'Tik', 'Aither',
              'SugoiMusic', 'CG', 'ZHUQUE', 'MTeam', 'FNP', 'OnlyEncodes', 'YemaPT', 'DarkLand', '影'].indexOf(forward_site) < 0){
             if (forward_site == 'HDT') {
